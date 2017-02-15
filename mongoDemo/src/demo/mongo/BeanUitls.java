@@ -53,7 +53,7 @@ public class BeanUitls {
     public static String getGetMethod(String field,List<Method> methodList) throws Exception {
         if(field != null && !field.isEmpty()) {
             char[] cs = field.toCharArray();
-            if ((cs[0] >= 'a' && cs[0] <= 'z') || (cs[0] >= 'A' && cs[0] <= 'Z')) {
+            if ((cs[0] >= 'a' && cs[0] <= 'z')) {
                 cs[0] -= 32;
             }
             final String method = "get" + String.valueOf(cs);
