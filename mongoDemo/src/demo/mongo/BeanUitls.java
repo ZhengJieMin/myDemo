@@ -13,11 +13,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by uas on 2017/2/15.
+ * Created by 郑杰民 on 2017/2/15.
  */
 public class BeanUitls {
     private static final String METHOD_TYPE_GET = "get";
     private static final String METHOD_TYPE_SET = "set";
+
+    /**
+     * 将实体类转换成DBObject。
+     * @param bean
+     * @return
+     */
     public static DBObject toDBObject(Object bean){
         DBObject dbObject = new BasicDBObject();
 
@@ -44,6 +50,13 @@ public class BeanUitls {
         return dbObject;
     }
 
+    /**
+     * 将org.bson.Document 转换成实体类。
+     * @param document
+     * @param clazz
+     * @param <T>
+     * @return
+     */
     public static <T> T toBean(org.bson.Document document ,Class<T> clazz){
 
         try {
@@ -61,8 +74,11 @@ public class BeanUitls {
 
             document.forEach((key, value) -> {
                 try {
+                    //获取方法名
                     String method = getMethod(key, methodList,METHOD_TYPE_SET);
+                    //方法名与实体类的方法名匹配
                     if(method != null && !method.isEmpty()){
+                        //获取值作用域
                         if (fieldList.stream().anyMatch(item -> item.getName().equals(key))) {
                             Field field = clazz.getDeclaredField(key);
                             field.setAccessible(true);
@@ -83,6 +99,15 @@ public class BeanUitls {
         return null;
     }
 
+
+    /**
+     * 匹配方法。
+     * @param field
+     * @param methodList
+     * @param type
+     * @return
+     * @throws Exception
+     */
     public static String getMethod(String field,List<Method> methodList,String type) throws Exception {
         if(field != null && !field.isEmpty()) {
             char[] cs = field.toCharArray();
