@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/mongoDemo/mongoDemo.iml" filepath="$PROJECT_DIR$/mongoDemo/mongoDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/myDemo.iml" filepath="$PROJECT_DIR$/myDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quartz/quartz.iml" filepath="$PROJECT_DIR$/quartz/quartz.iml" />
     </modules>
   </component>
 </project>

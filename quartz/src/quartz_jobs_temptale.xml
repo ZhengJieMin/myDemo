@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.ogr/xml/job_scheduling_data_1_8.xsd"
+                     version="1.8">
+
+    <!--在执行作业和触犯器之前执行的命令-->
+    <pre-processing-commands>
+
+        <!--删除标示组中的所有作业，如果是“*”,则删除所有组中的作业，同时也会删除与作业有关的触犯器 -->
+        <delete-jobs-in-group>*</delete-jobs-in-group>
+
+        <!--删除标示组中的所有触犯器，如果是“*”,则删除所有组中的触发器 -->
+        <delete-triggers-in-group>*</delete-triggers-in-group>
+
+        <!--删除指定的作业，同时也会删除与它关联的触犯器 -->
+        <delete-job>
+            <name></name>
+            <group></group>
+        </delete-job>
+
+        <!--删除指定的触犯器 -->
+        <delete-trigger>
+            <name></name>
+            <group></group>
+        </delete-trigger>
+    </pre-processing-commands>
+
+
+    <!--在计划作业和触发器是应遵循的命令和原则 -->
+    <processing-directives>
+
+        <!--是否复写已经存在的任务计划数据，如果为false并且ingore-duplicates非false，那么文件中同名的触发器或作业将会继续存在，则会产生错误 true or false-->
+        <overwrite-existing-data></overwrite-existing-data>
+
+        <!--如果为true，计划中的任何同名的作业/触发器将会被忽略，不会产生错误 true or false-->
+        <ignore-duplicates></ignore-duplicates>
+
+    </processing-directives>
+
+    <schedule>
+        <job>
+            <name>JobName</name>
+            <group>JobGroup</group>
+            <description></description>
+            <job-class></job-class>
+            <job-listener-ref></job-listener-ref>
+            <!-- volatility,durability,recover必须按顺序设定 -->
+            <volatility></volatility>
+            <durability></durability>
+            <recover></recover>
+            <job-data-map>
+                <!-- entry可以设定多个-->
+                <entry>
+                    <key></key>
+                    <value></value>
+                </entry>
+            </job-data-map>
+        </job>
+
+        <!-- Trigger分为simple，cron，date-interval三种类型，一个trigger中只能指定一种类型-->
+        <trigger>
+            <simple>
+                <name></name>
+                <group></group>
+                <description></description>
+                <job-name></job-name>
+                <job-group></job-group>
+                <calendar-name></calendar-name>
+                <volatility></volatility>
+                <job-data-map>
+                    <entry>
+                        <key></key>
+                        <value></value>
+                    </entry>
+                </job-data-map>
+                <start-time></start-time>
+                <end-time></end-time>
+                <misfire-instruction></misfire-instruction>
+                <repeat-count></repeat-count>
+                <repeat-interval></repeat-interval>
+            </simple>
+            <cron>
+                <name></name>
+                <group></group>
+                <description></description>
+                <job-name></job-name>
+                <job-group></job-group>
+                <calendar-name></calendar-name>
+                <volatility></volatility>
+                <job-data-map>
+                    <entry>
+                        <key></key>
+                        <value></value>
+                    </entry>
+                </job-data-map>
+                <start-time></start-time>
+                <end-time></end-time>
+                <misfire-instruction></misfire-instruction>
+                <cron-expression></cron-expression>
+                <time-zone></time-zone>
+            </cron>
+            <date-interval>
+                <name></name>
+                <group></group>
+                <description></description>
+                <job-name></job-name>
+                <job-group></job-group>
+                <calendar-name></calendar-name>
+                <volatility></volatility>
+                <job-data-map>
+                    <entry>
+                        <key></key>
+                        <value></value>
+                    </entry>
+                </job-data-map>
+                <start-time></start-time>
+                <end-time></end-time>
+                <misfire-instruction></misfire-instruction>
+                <repeat-interval></repeat-interval>
+                <repeat-interval-unit></repeat-interval-unit>
+            </date-interval>
+        </trigger>
+    </schedule>
+</job-scheduling-data>

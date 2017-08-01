@@ -55,6 +55,8 @@ public class MongoJdbc {
         System.out.println("正在链接到数据库。。。");
         this.mongoDatabase = this.mongoClient.getDatabase(dataBaseName);
         System.out.println("链接到数据库"+dataBaseName);
+
+
     }
 
     public void setServerAddress(ServerAddress serverAddress) {
