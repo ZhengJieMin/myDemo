@@ -1,9 +1,6 @@
 package jop;
 
-import org.quartz.Job;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.Scheduler;
+import org.quartz.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,7 +48,10 @@ public class MyJobFactory extends JobBuilder {
     }
 
     public JobDetail createNewJob(String name, String group, Class<? extends Job> jobClass){
-        JobDetail job = factory.newJob(jobClass).withIdentity(name,group).build();
+        JobDetail job = factory.newJob(jobClass)
+                .withIdentity(name,group)
+                .usingJobData(new JobDataMap(new HashMap<String,Object>()))
+                .build();
         addJob(group,job);
         return job;
     }
