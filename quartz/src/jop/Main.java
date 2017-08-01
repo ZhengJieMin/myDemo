@@ -11,6 +11,7 @@ import java.io.File;
  */
 public class Main {
     public static void main(String[] args) {
+        //java代码风格
 /*        MyTriggerFactory myTriggerFactory = new MyTriggerFactory();
         MySchedulerFactory mySchedulerFactory = new MySchedulerFactory();
         MyJobFactory myJobFactory = new MyJobFactory();
@@ -20,9 +21,12 @@ public class Main {
                         .simpleSchedule()
                         .withIntervalInSeconds(2)
                         .withRepeatCount(9)));//实际上运行 n + 1 次*/
+
+        //配置文件风格
         MySchedulerFactory mySchedulerFactory = new MySchedulerFactory();
         try {
 //            System.getProperty("org.quartz.properties");
+            //源码中会扫描System.getProperty("org.quartz.properties")中的路径
             System.setProperty("org.quartz.properties",Main.class.getClass().getResource("/").getPath()+"quartz.properties");
             Scheduler scheduler = mySchedulerFactory.getInstance().getScheduler();
             scheduler.start();
